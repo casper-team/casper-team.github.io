@@ -1,6 +1,19 @@
-<h1>
-hi
-</h1>
-<script type="text/javascript" src="static/aalib.js"></script>
-<img src="static/index.jpg"/>
+<h1>Hello World</h1>
+<a href="about.html">About team Casper</a>
+<p>
+    The Idea is to rank countries about how seriously they appear to be taking the Covid-19 epidemic with remote sensing,epidemiological and Search Trends data 
+    you can check the code at <a href="https://github.com/casper-team/casper">github</a>
+</p>
+<script>
+
+function picture(){ 
+        var pic = "static/index.jpg"
+        document.getElementById('bigpic').src = pic.replace('90x90', '225x225');
+        }
+</script>
+
+<img id="bigpic" src="static/index.jpg"/>
+
+
+<button onclick="picture()">Enlarge</button>
 
