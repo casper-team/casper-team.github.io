@@ -1,0 +1,82 @@
+<!DOCTYPE HTML> 
+<html> 
+
+<head> 
+	<title> 
+Simple table results
+	</title> 
+	
+	<script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
+	</script> 
+</head> 
+
+<body style = "text-align:center;" id = "body"> 
+	<p id = "GFG_UP" style = 
+		"font-size: 15px; font-weight: bold;"> 
+	</p> 
+	
+
+	
+	<br><br> 
+	
+	<table align = "center"
+			id="table" border="1"> 
+	</table> 
+	
+	<script> 
+		var el_up = document.getElementById("GFG_UP"); 
+		
+		var list = [ 
+		{"China": 1, "Denmark": 2, "Belgium": 3, "Austria": 4, "Belarus": 5, "Switzerland": 6, "Luxembourg": 7, "Bahrain": 8, "Liechtenstein": 9, "Monaco": 10, "Andorra": 11, "Chile": 12, "Holy See (Vatican City State)": 13, "Albania": 14, "Algeria": 15, "Angola": 16, "Antigua and Barbuda": 17, "Argentina": 18, "Azerbaijan": 19, "Bahamas": 20, "Barbados": 21, "Belize": 22, "Benin": 23, "Bhutan": 24, "Bolivia": 25, "Bosnia and Herzegovina": 26, "Botswana": 27, "Bulgaria": 28, "Burkina Faso": 29, "Burundi": 30, "Cambodia": 31, "Cape Verde": 32, "Central African Republic": 33, "Chad": 34, "Comoros": 35, "Congo (Brazzaville)": 36, "Congo (Kinshasa)": 37, "Costa Rica": 38, "C\u00f4te d'Ivoire": 39, "Croatia": 40, "Cuba": 41, "Cyprus": 42, "Czech Republic": 43, "Dominica": 44, "Dominican Republic": 45, "Ecuador": 46, "El Salvador": 47, "Equatorial Guinea": 48, "Eritrea": 49, "Estonia": 50, "Fiji": 51, "Finland": 52, "Gabon": 53, "Gambia": 54, "Georgia": 55, "Grenada": 56, "Guatemala": 57, "Guinea": 58, "Guinea-Bissau": 59, "Guyana": 60, "Haiti": 61, "Honduras": 62, "Hungary": 63, "Iraq": 64, "Italy": 65, "Jamaica": 66, "Japan": 67, "Jordan": 68, "Kazakhstan": 69, "Kenya": 70, "Korea (South)": 71, "Kyrgyzstan": 72, "Lao PDR": 73, "Latvia": 74, "Lesotho": 75, "Liberia": 76, "Libya": 77, "Lithuania": 78, "Macedonia, Republic of": 79, "Madagascar": 80, "Malawi": 81, "Malaysia": 82, "Mali": 83, "Malta": 84, "Mauritania": 85, "Mauritius": 86, "Mexico": 87, "Moldova": 88, "Mongolia": 89, "Montenegro": 90, "Morocco": 91, "Mozambique": 92, "Myanmar": 93, "Nepal": 94, "New Zealand": 95, "Nicaragua": 96, "Niger": 97, "Norway": 98, "Oman": 99, "Palestinian Territory": 100, "Panama": 101, "Papua New Guinea": 102, "Paraguay": 103, "Philippines": 104, "Poland": 105, "Portugal": 106, "Romania": 107, "Russian Federation": 108, "Rwanda": 109, "Saint Kitts and Nevis": 110, "Saint Lucia": 111, "Saint Vincent and Grenadines": 112, "San Marino": 113, "Senegal": 114, "Serbia": 115, "Seychelles": 116, "Sierra Leone": 117, "Slovakia": 118, "Slovenia": 119, "Somalia": 120, "South Sudan": 121, "Spain": 122, "Sri Lanka": 123, "Sudan": 124, "Suriname": 125, "Swaziland": 126, "Sweden": 127, "Syrian Arab Republic (Syria)": 128, "Taiwan, Republic of China": 129, "Tajikistan": 130, "Tanzania, United Republic of": 131, "Thailand": 132, "Timor-Leste": 133, "Togo": 134, "Trinidad and Tobago": 135, "Tunisia": 136, "Turkey": 137, "Uganda": 138, "Ukraine": 139, "Uruguay": 140, "Uzbekistan": 141, "Venezuela (Bolivarian Republic)": 142, "Viet Nam": 143, "Western Sahara": 144, "Yemen": 145, "Zambia": 146, "Zimbabwe": 147, "Armenia": 148, "Kuwait": 149, "Maldives": 150, "Singapore": 151, "Sao Tome and Principe": 152, "Djibouti": 153, "Iceland": 154, "Israel": 155, "Namibia": 156, "Peru": 157, "Brunei Darussalam": 158, "Lebanon": 159, "Ethiopia": 160, "Republic of Kosovo": 161, "Greece": 162, "Egypt": 163, "Afghanistan": 164, "Nigeria": 165, "Indonesia": 166, "Saudi Arabia": 167, "Cameroon": 168, "Qatar": 169, "Iran, Islamic Republic of": 170, "Bangladesh": 171, "United Arab Emirates": 172, "Ghana": 173, "Colombia": 174, "South Africa": 175, "India": 176, "Pakistan": 177, "Ireland": 178, "Germany": 179, "Brazil": 180, "Australia": 181, "Netherlands": 182, "France": 183, "Canada": 184, "United Kingdom": 185, "United States of America": 186}]; 
+					
+		function constructTable(selector) { 
+			
+			// Getting the all column names 
+			var cols = Headers(list, selector); 
+
+			// Traversing the JSON data 
+			for (var i = 0; i < list.length; i++) { 
+				var row = $('<tr/>'); 
+				for (var colIndex = 0; colIndex < cols.length; colIndex++) 
+				{ 
+					var val = list[i][cols[colIndex]]; 
+					
+					// If there is any key, which is matching 
+					// with the column name 
+					if (val == null) val = ""; 
+						row.append($('<td/>').html(val)); 
+				} 
+				
+				// Adding each row to the table 
+				$(selector).append(row); 
+			} 
+		} 
+		
+		function Headers(list, selector) { 
+			var columns = []; 
+			var header = $('<tr/>'); 
+			
+			for (var i = 0; i < list.length; i++) { 
+				var row = list[i]; 
+				
+				for (var k in row) { 
+					if ($.inArray(k, columns) == -1) { 
+						columns.push(k); 
+						
+						// Creating the header 
+						header.append($('<th/>').html(k)); 
+					} 
+				} 
+			} 
+			
+			// Appending the header to the table 
+			$(selector).append(header); 
+				return columns; 
+		}	 
+            constructTable('#table');
+        
+	</script> 
+</body> 
+
+</html> 
